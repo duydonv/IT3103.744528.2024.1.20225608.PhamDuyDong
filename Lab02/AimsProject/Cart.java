@@ -16,6 +16,35 @@ public class Cart {
         }
     }
 
+    public void addDigitalVideoDisc(DigitalVideoDisc[] dvdList) {
+        for (DigitalVideoDisc dvd : dvdList) {
+            addDigitalVideoDisc(dvd);
+        }
+    }
+
+    /* 
+	    public void addDigitalVideoDisc(DigitalVideoDisc... dvds) {
+	        for (DigitalVideoDisc dvd : dvds) {
+	            addDigitalVideoDisc(dvd);
+            }
+	    }
+    */
+
+    public void addDigitalVideoDisc(DigitalVideoDisc dvd1, DigitalVideoDisc dvd2) { 
+        if (qtyOrdered + 2 > MAX_NUMBERS_ORDERED) {
+            System.out.println("Pham Duy Dong - 5608 - The cart is full, cannot add more items.");
+            return;
+        }
+
+        itemsOrdered[qtyOrdered] = dvd1;
+        qtyOrdered++;
+        System.out.println("Pham Duy Dong - 5608 - The disc has been added to the cart.");
+
+        itemsOrdered[qtyOrdered] = dvd2;
+        qtyOrdered++;
+        System.out.println("Pham Duy Dong - 5608 - The disc has been added to the cart.");
+    }
+
     // Method to remove a DigitalVideoDisc from the cart
     public void removeDigitalVideoDisc(DigitalVideoDisc disc) {
         boolean found = false;
