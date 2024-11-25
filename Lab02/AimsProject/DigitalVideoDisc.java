@@ -22,6 +22,9 @@ public class DigitalVideoDisc {
     public float getCost() {
         return cost;
     }
+    public void setTitle(String title) {
+		this.title = title;
+	}
 
     // Constructor 1: Create DVD by title
     public DigitalVideoDisc(String title) {

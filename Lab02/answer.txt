@@ -1,43 +1,14 @@
-Tạo một số constructor method cho các mục đích khác nhau:
-- Create a DVD object by title
-- Create a DVD object by category, title and cost
-- Create a DVD object by director, category, title and cost
-- Create a DVD object by all attributes: title, category, director, length and cost
-=> Code:
+Câu 1: Try to add a method addDigitalVideoDisc which allows to pass an arbitrary number of arguments for dvd. Compare to an array parameter. What do you prefer?
+- Nên thêm một phương thức addDigitalVideoDisc cho phép truyền một số lượng tùy ý các đối số. Khi so sánh với việc sử dụng mảng:
+- Truyền số lượng tùy ý các đối số mang lại sự tiện lợi, không giới hạn số lượng phần tử. Tuy nhiên, nếu phương thức chứa các tham số khác ngoài DigitalVideoDisc, việc quản lý sẽ trở nên phức tạp hơn.
+Sử dụng mảng mang tính rõ ràng, giúp kiểm soát chặt chẽ, nhưng lại giới hạn ở số lượng phần tử cố định, không linh hoạt bằng cách truyền số lượng tùy ý.
+- Ưu tiên cách truyền số lượng tùy ý các đối số, vì trong thực tế, việc thêm hoặc bớt các phần tử vào giỏ hàng yêu cầu sự linh hoạt về số lượng.
 
-    // Constructor 1: Create DVD by title
-    public DigitalVideoDisc(String title) {
-        this.title = title;
-    }
+Câu 2: Is JAVA a Pass by Value or a Pass by Reference programming language?
+Java là ngôn ngữ lập trình "Pass by Value". Trong Java, khi bạn truyền một tham số cho một phương thức, giá trị của tham số được sao chép và truyền vào phương thức. Điều này có nghĩa là nếu bạn thay đổi giá trị của tham số bên trong phương thức, giá trị của biến gọi phương thức không bị ảnh hưởng. 
 
-    // Constructor 2: Create DVD by category, title, and cost
-    public DigitalVideoDisc(String category, String title, float cost) {
-        this.category = category;
-        this.title = title;																				// Pham Duy Dong - 5608
-        this.cost = cost;
-    }
+Câu 3: After the call of swap(jungleDVD, cinderellaDVD) why does the title of these two objects still remain? 
+Sau khi gọi phương thức swap(jungleDVD, cinderellaDVD), tiêu đề của hai đối tượng này không thay đổi. Điều này là do trong Java, khi truyền đối tượng vào một phương thức, chỉ giá trị của tham chiếu (địa chỉ bộ nhớ) được truyền, không phải chính đối tượng. Bản sao của tham chiếu được sử dụng bên trong phương thức swap, và việc thay đổi bản sao này không ảnh hưởng đến tham chiếu ban đầu. Vì vậy, các đối tượng ban đầu vẫn giữ nguyên tiêu đề.
 
-    // Constructor 3: Create DVD by director, category, title, and cost
-    public DigitalVideoDisc(String director, String category, String title, float cost) {
-        this.director = director;
-        this.category = category;
-        this.title = title;																				// Pham Duy Dong - 5608
-        this.cost = cost;
-    }
-
-    // Constructor 4: Create DVD by all attributes: title, category, director, length, cost
-    public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
-        this.title = title;
-        this.category = category;
-        this.director = director;
-        this.length = length;
-        this.cost = cost;
-    }
-
-Câu hỏi: Nếu tạo một constructor method để xây dựng một đối tượng DVD chỉ với title, sau đó tạo một constructor method khác để xây dựng một đối tượng DVD chỉ với category, Java có cho phép làm điều này không?
-=>Trả lời: 
-- Nếu tạo một constructor để xây dựng DVD chỉ với title và sau đó tạo một constructor để xây dựng DVD chỉ với category, Java sẽ không cho phép điều này. Lý do là cả hai constructor sẽ có cùng chữ ký (cả hai chỉ nhận một tham số kiểu String), điều này gây ra xung đột. Đây được gọi là lỗi duplicate constructor trong Java.
-- Java phân biệt giữa các constructor nạp chồng dựa trên số lượng hoặc kiểu của tham số. Trong trường hợp này:
-    +	DigitalVideoDisc(String title)
-    +  	DigitalVideoDisc(String category)
-Cả hai constructor đều nhận một tham số kiểu String, và Java không thể phân biệt chúng chỉ dựa trên tên của tham số, do đó sẽ gây ra lỗi biên dịch.
+Câu 4: After the call of changeTitle(jungleDVD, cinderellaDVD.getTitle()) why is the title of the JungleDVD changed?
+Khi gọi phương thức changeTitle(jungleDVD, cinderellaDVD.getTitle()), tiêu đề của đối tượng jungleDVD bị thay đổi. Điều này xảy ra vì tham chiếu của jungleDVD được truyền vào phương thức changeTitle, cho phép phương thức này trực tiếp thay đổi trạng thái của đối tượng mà tham chiếu đang trỏ tới. Do đó, khi phương thức thay đổi thuộc tính title của jungleDVD, tiêu đề của đối tượng gốc cũng thay đổi theo.
