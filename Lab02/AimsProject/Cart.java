@@ -16,6 +16,33 @@ public class Cart {
         }
     }
 
+    public void addDigitalVideoDisc(DigitalVideoDisc[] dvdList) {
+        for (DigitalVideoDisc dvd : dvdList) {
+            addDigitalVideoDisc(dvd);
+        }
+    }
+
+//	    public void addDigitalVideoDisc(DigitalVideoDisc... dvds) {
+//	        for (DigitalVideoDisc dvd : dvds) {
+//	            addDigitalVideoDisc(dvd);
+//	        }
+//	    }
+    
+    public void addDigitalVideoDisc(DigitalVideoDisc dvd1, DigitalVideoDisc dvd2) {
+        if (qtyOrdered + 2 > MAX_NUMBERS_ORDERED) {
+            System.out.println("Pham Duy Dong - 5608 - The cart is full, cannot add more items.");
+            return;
+        }
+
+        itemsOrdered[qtyOrdered] = dvd1;
+        qtyOrdered++;
+        System.out.println("Pham Duy Dong - 5608 - The disc has been added to the cart.");
+
+        itemsOrdered[qtyOrdered] = dvd2;
+        qtyOrdered++;
+        System.out.println("Pham Duy Dong - 5608 - The disc has been added to the cart.");
+    }
+
     // Method to remove a DigitalVideoDisc from the cart
     public void removeDigitalVideoDisc(DigitalVideoDisc disc) {
         boolean found = false;
@@ -44,5 +71,37 @@ public class Cart {
             total += itemsOrdered[i].getCost();
         }
         return total;
+    }
+
+    // Method to print Cart
+    public void print() {
+    System.out.println("***********************CART***********************");
+    System.out.println("Pham Duy Dong - 5608 - Ordered Items:");
+
+    for (int i = 0; i < qtyOrdered; i++) {
+        System.out.println((i + 1) + ". " + itemsOrdered[i].toString());
+    }
+
+    System.out.println("Pham Duy Dong - 5608 - Total cost: " + totalCost() + " $");
+    System.out.println("***************************************************");
+    }
+
+	 // Search by ID
+     public DigitalVideoDisc searchById(int id) {
+        for (int i = 0; i < qtyOrdered; i++) {
+            if (itemsOrdered[i].getId() == id) {
+                return itemsOrdered[i];
+            }
+        }
+        return null; 
+    }                       //Pham Duy Dong - 5608
+    // Search by Title
+    public DigitalVideoDisc searchByTitle(String title) {
+        for (int i = 0; i < qtyOrdered; i++) {
+            if (itemsOrdered[i].isMatch(title)) {
+                return itemsOrdered[i];
+            }
+        }
+        return null; 
     }
 }
