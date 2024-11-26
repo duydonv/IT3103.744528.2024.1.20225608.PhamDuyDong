@@ -5,6 +5,14 @@ public class Aims {
     // Create a new cart
     Cart anOrder = new Cart();
 
+    DigitalVideoDisc dvd1 = new DigitalVideoDisc("Action", "Jungle", 20.5f);
+    DigitalVideoDisc dvd2 = new DigitalVideoDisc("Adventure", "Cinderella", 15.0f);
+
+    System.out.println("Pham Duy Dong - 5608 - DVD 1 ID: " + dvd1.getId()); // Output: DVD 1 ID: 1
+    System.out.println("Pham Duy Dong - 5608 - DVD 2 ID: " + dvd2.getId()); // Output: DVD 2 ID: 2
+    System.out.println("Pham Duy Dong - 5608 - Total DVDs: " + DigitalVideoDisc.getNbDigitalVideoDiscs());
+
+/* 
     // Create new dvd objects and add them to the cart
     DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f);
     anOrder.addDigitalVideoDisc(dvd1);
@@ -29,5 +37,7 @@ public class Aims {
     DigitalVideoDisc dvd4 = new DigitalVideoDisc("Nonexistent Movie", "Genre", "Director", 100, 10.0f);
     System.out.println("Pham Duy Dong - 5608 - Attempting to remove a disc not in the cart.");
     anOrder.removeDigitalVideoDisc(dvd4);
-    }
+   
+*/
+}
 }
