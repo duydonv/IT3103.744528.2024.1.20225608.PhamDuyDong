@@ -142,4 +142,7 @@ public class Cart {
         print();
         scanner.close();
     }
+    public ArrayList<Media> getItemsOrdered() {
+        return itemsOrdered;
+    }
 }

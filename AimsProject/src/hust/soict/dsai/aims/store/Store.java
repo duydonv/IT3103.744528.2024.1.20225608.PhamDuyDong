@@ -66,4 +66,8 @@ public class Store {
         }
         return null;
     }
+     // Getter for itemsInStore
+     public ArrayList<Media> getItemsInStore() {
+        return this.itemsInStore;
+    }
 }

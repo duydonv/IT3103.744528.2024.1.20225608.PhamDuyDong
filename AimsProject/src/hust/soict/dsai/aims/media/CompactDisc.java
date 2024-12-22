@@ -1,6 +1,9 @@
 package hust.soict.dsai.aims.media;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+
+import hust.soict.dsai.aims.exception.PlayerException;
 
 public class CompactDisc extends Disc implements Playable {
     private String artist;
@@ -47,12 +50,26 @@ public class CompactDisc extends Disc implements Playable {
     }
 
     // Implement play() from Playable interface
-    public void play() {
-    System.out.println("Pham Duy Dong - 5608 - Playing Compact Disc: " + getTitle());
-    System.out.println("Pham Duy Dong - 5608 - Artist: " + artist);
-    for (Track track : tracks) {
-        track.play(); // Call play() of each track
+    public void play() throws PlayerException {
+        if (this.getLength() > 0) {
+            Iterator<Track> iter = tracks.iterator();
+            Track nextTrack;
+            while (iter.hasNext()) {
+                nextTrack = iter.next();
+                try {
+                    nextTrack.play(); 
+                } catch (PlayerException e) {
+                    System.err.println(e.getMessage());
+                    // Continue playing other tracks, or throw PlayerException if required
+                    throw e;
+                }
+            }
+        } else {
+            throw new PlayerException("Pham Duy Dong - 5608 - ERROR: CD length is non-positive!");
+        }
     }
-    System.out.println("Pham Duy Dong - 5608 - Total CD length: " + getLength() + " mins");
+
+    public ArrayList<Track> getTracks() {
+        return tracks;
     }
 }
